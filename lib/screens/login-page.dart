@@ -1,13 +1,18 @@
 // ignore: file_names
-
-
 import 'package:bookingsoccerfeild/palatte.dart';
+import 'package:bookingsoccerfeild/services/firebase_services.dart';
 import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
+import 'home.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -38,14 +43,29 @@ class LoginPage extends StatelessWidget {
                     child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 30),
                         child: ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(backgroundColor:
-                                MaterialStateProperty.resolveWith((states) {
-                              if (states.contains(MaterialState.pressed)) {
-                                return Colors.black26;
-                              }
-                              return Colors.white;
-                            })),
+                            onPressed: () async {
+                              await FirebaseServices().signInWithGoogle();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomeScreen()));
+                            },
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith((states) {
+                                if (states.contains(MaterialState.pressed)) {
+                                  return Colors.black26;
+                                }
+                                return Colors.white;
+                              }),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(30.0),
+                                )
+                              ),
+                            ),
+                            
+                            
                             child: Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Padding(
