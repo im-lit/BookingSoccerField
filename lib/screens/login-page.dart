@@ -3,7 +3,7 @@ import 'package:bookingsoccerfeild/palatte.dart';
 import 'package:bookingsoccerfeild/services/firebase_services.dart';
 import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
-import 'home.dart';
+import 'main-app.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const HomeScreen()));
+                                          const MainApp()));
                             },
                             style: ButtonStyle(
                               backgroundColor:
