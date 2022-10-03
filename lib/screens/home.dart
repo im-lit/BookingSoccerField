@@ -1,7 +1,5 @@
-import 'package:bookingsoccerfeild/services/firebase_services.dart';
 import 'package:flutter/material.dart';
-
-import 'login-page.dart';
+import 'package:bookingsoccerfeild/widgets/NavBar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,15 +12,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: ElevatedButton(
-        onPressed: () async{
-          await FirebaseServices().signOut();
-          Navigator.push(context,
-           MaterialPageRoute(builder: (context) => LoginPage()));
-        },
-      child: Text("Logout"),)),
+      drawer: NavBar(),
+      appBar: AppBar(
+         title: Image.asset('assets/ball.ico', fit: BoxFit.cover,
+         height: 70,
+         width: 50,
+         ),
+         centerTitle: true,
+         backgroundColor: Color.fromARGB(255, 46, 46, 46),
+      ),
     );
   }
 }

@@ -18,26 +18,39 @@ class _LoginPageState extends State<LoginPage> {
     return Stack(
       children: [
         const BackgroundImages(),
+        Align(
+          alignment: const Alignment(0.4, -1),
+          child: Image.asset(
+            'assets/ball.png',
+            height: 240,
+          ),
+        ),
         Scaffold(
           backgroundColor: Colors.transparent,
           body: SafeArea(
             child: Column(children: [
-              Image.asset(
-                'assets/ball.png',
-                height: 240,
-              ),
               const SizedBox(
-                height: 100,
-                child: Center(
+                height: 500,
+                child: Align(alignment: Alignment(0.0, 0.3),
                   child: Text(
                     'Booking SoccerField',
                     style: kCenter,
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 40,
+                child: Align(
+                  alignment: Alignment(-0.75, -120),
+                  child: Text(
+                    'Online',
+                    style: kOnline,
+                  ),
+                ),
+              ),
               Column(children: [
                 const SizedBox(
-                  height: 230,
+                  height: 40,
                 ),
                 Center(
                     child: Container(
@@ -45,10 +58,12 @@ class _LoginPageState extends State<LoginPage> {
                         child: ElevatedButton(
                             onPressed: () async {
                               await FirebaseServices().signInWithGoogle();
+                              // ignore: use_build_context_synchronously
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const HomeScreen()));
+                                      builder: (context) =>
+                                          const HomeScreen()));
                             },
                             style: ButtonStyle(
                               backgroundColor:
@@ -58,14 +73,12 @@ class _LoginPageState extends State<LoginPage> {
                                 }
                                 return Colors.white;
                               }),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(30.0),
-                                )
-                              ),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0),
+                              )),
                             ),
-                            
-                            
                             child: Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Padding(
