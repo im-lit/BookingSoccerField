@@ -1,4 +1,5 @@
 import 'package:bookingsoccerfeild/screens/home_screen.dart';
+import 'package:bookingsoccerfeild/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bookingsoccerfeild/widgets/NavBar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -34,6 +35,7 @@ class _MainAppState extends State<MainApp> {
           Container(
             color: Colors.amber.shade100,
           ),
+        ProfileScreen()
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -57,6 +59,12 @@ class _MainAppState extends State<MainApp> {
             label: (''),
             icon: Icon(
               (Icons.notifications),
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: (''),
+            icon: Icon(
+              (Icons.account_circle_outlined),
             ),
           )
         ],

@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 40,
                 child: Align(
-                  alignment: Alignment(-0.75, -120),
+                  alignment: Alignment(-0.78, -125),
                   child: Text(
                     'Online',
                     style: kOnline,
