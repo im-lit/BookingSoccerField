@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "653611239997",
+    "project_id": "bookingsoccerfield",
+    "storage_bucket": "bookingsoccerfield.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653611239997:android:92ed805d3c046e316a3854",
+        "android_client_info": {
+          "package_name": "com.example.bookingsoccerfeild"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653611239997-1vpegvf6cbtmb9un90kqrncbf6g2f6v2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookingsoccerfeild",
+            "certificate_hash": "9e438dc0f731eea37fb44d1fd442c8f44fb359a9"
+          }
+        },
+        {
+          "client_id": "653611239997-4th1g5fechfjvjohrjo986m21uci6g9c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookingsoccerfeild",
+            "certificate_hash": "c904baab30241d6e6dac8c9427891ab13c05c84f"
+          }
+        },
+        {
+          "client_id": "653611239997-umf1vbfv3he1f8mhrdnd4uif7490bnqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookingsoccerfeild",
+            "certificate_hash": "75deaa9e5b40b8a3967ce42f6c428dc40d3d072c"
+          }
+        },
+        {
+          "client_id": "653611239997-saajoteco2mbki7q7lmd4k97abb020ih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVSerAOR-J959b5D7wV4iWamjlEsHopA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653611239997-saajoteco2mbki7q7lmd4k97abb020ih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

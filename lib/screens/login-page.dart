@@ -1,6 +1,9 @@
 // ignore: file_names
+import 'package:bookingsoccerfeild/models/userApi.dart';
+import 'package:bookingsoccerfeild/network/network_request.dart';
 import 'package:bookingsoccerfeild/palatte.dart';
 import 'package:bookingsoccerfeild/services/firebase_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
 import 'main-app.dart';
@@ -12,7 +15,11 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+String jwt = "";
+String getJWT(String value) => jwt = value;
+
 class _LoginPageState extends State<LoginPage> {
+  String? check;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -31,7 +38,8 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(children: [
               const SizedBox(
                 height: 500,
-                child: Align(alignment: Alignment(0.0, 0.3),
+                child: Align(
+                  alignment: Alignment(0.0, 0.3),
                   child: Text(
                     'Booking SoccerField',
                     style: kCenter,
@@ -57,13 +65,27 @@ class _LoginPageState extends State<LoginPage> {
                         margin: const EdgeInsets.symmetric(horizontal: 30),
                         child: ElevatedButton(
                             onPressed: () async {
-                              await FirebaseServices().signInWithGoogle();
+                              check =
+                                  await FirebaseServices().signInWithGoogle();
+                                  print(check);
+                              if (check != null) {
+                                userApi? user = await fetchUser(check);
+                                if (user!.data!.jwt == "") {
+                                  
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginPage()));
+                                  FirebaseServices().signOut();
+                                } else {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MainApp()),
+                                  );
+                                }
+                              }
                               // ignore: use_build_context_synchronously
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const MainApp()));
                             },
                             style: ButtonStyle(
                               backgroundColor:
