@@ -3,10 +3,11 @@ import 'package:bookingsoccerfeild/models/userApi.dart';
 import 'package:bookingsoccerfeild/network/network_request.dart';
 import 'package:bookingsoccerfeild/palatte.dart';
 import 'package:bookingsoccerfeild/services/firebase_services.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
+
 import '../widgets/widgets.dart';
-import 'main-app.dart';
+import 'main_app.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -67,17 +68,16 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: () async {
                               check =
                                   await FirebaseServices().signInWithGoogle();
-                                  print(check);
                               if (check != null) {
                                 userApi? user = await fetchUser(check);
                                 if (user!.data!.jwt == "") {
-                                  
+                                  // ignore: use_build_context_synchronously
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => LoginPage()));
-                                  FirebaseServices().signOut();
                                 } else {
+                                  // ignore: use_build_context_synchronously
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

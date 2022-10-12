@@ -1,3 +1,5 @@
+
+import 'package:bookingsoccerfeild/screens/detailbookingscreen/detail_screen.dart';
 import 'package:bookingsoccerfeild/screens/home_screen.dart';
 import 'package:bookingsoccerfeild/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +32,9 @@ class _MainAppState extends State<MainApp> {
       ),
       body: IndexedStack(
         index: _currentIndex,
-        children: [
-          HomeScreen(),
-          Container(
-            color: Colors.amber.shade100,
-          ),
+        children: const [
+        HomeScreen(),
+        Detail(),
         ProfileScreen()
         ],
       ),
