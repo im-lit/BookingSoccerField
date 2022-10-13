@@ -1,16 +1,18 @@
 // ignore: file_names
-import 'package:bookingsoccerfeild/models/userApi.dart';
+import 'package:bookingsoccerfeild/data/models/userApi.dart';
 import 'package:bookingsoccerfeild/network/network_request.dart';
 import 'package:bookingsoccerfeild/palatte.dart';
 import 'package:bookingsoccerfeild/services/firebase_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../../widgets/background-image.dart';
 import '../widgets/widgets.dart';
 import 'main-app.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  static String routeName = '/login-page';
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -67,22 +69,16 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: () async {
                               check =
                                   await FirebaseServices().signInWithGoogle();
-                                  print(check);
+                              print(check);
                               if (check != null) {
                                 userApi? user = await fetchUser(check);
                                 if (user!.data!.jwt == "") {
-                                  
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LoginPage()));
+                                  Navigator.of(context)
+                                      .pushNamed(LoginPage.routeName);
                                   FirebaseServices().signOut();
                                 } else {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MainApp()),
-                                  );
+                                  Navigator.of(context)
+                                      .pushNamed(MainApp.routeName);
                                 }
                               }
                               // ignore: use_build_context_synchronously
