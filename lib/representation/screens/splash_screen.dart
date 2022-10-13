@@ -1,6 +1,6 @@
 import 'package:bookingsoccerfeild/core/helpers/asset_helper.dart';
 import 'package:bookingsoccerfeild/core/helpers/image_helper.dart';
-import 'package:bookingsoccerfeild/representation/screens/login-page.dart';
+import 'package:bookingsoccerfeild/representation/screens/login_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {

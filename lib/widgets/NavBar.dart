@@ -1,16 +1,46 @@
 import 'package:flutter/material.dart';
-import '../representation/screens/login-page.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../representation/screens/login_page.dart';
 import '../services/firebase_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class NavBar extends StatelessWidget {
+class NavBar extends StatefulWidget {
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  String name = "";
+  String email = "";
+
+  void _getJWTandToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      name = prefs.getString("NAME")!;
+      email = prefs.getString("EMAIL")!;
+    });
+  }
+
+  @override
+  void initState() {
+    _getJWTandToken();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('Nam Long'),
-            accountEmail: Text('longntnse141021@fpt.edu.vn'),
+            accountName: Text(
+              name,
+              style: GoogleFonts.josefinSans(fontSize: 20),
+            ),
+            accountEmail: Text(
+              email,
+              style: GoogleFonts.josefinSans(
+                  fontSize: 17, color: Color.fromARGB(255, 255, 0, 170)),
+            ),
             currentAccountPicture: CircleAvatar(
                 child: ClipOval(
               child: Image.network(

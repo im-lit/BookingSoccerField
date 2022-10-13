@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -9,9 +11,23 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final double profileHeight = 144;
-  final double coverHeight = 280;
+  String token = "";
+  String jwt = "";
+  String name = "";
+  String email = "";
+  void _getJWTandToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      token = prefs.getString("TOKEN")!;
+      jwt = prefs.getString("JWT")!;
+      name = prefs.getString("NAME")!;
+      email = prefs.getString("EMAIL")!;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    _getJWTandToken();
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.zero,
@@ -24,23 +40,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget buildContent() => Column(
-        children:  [
+        children: [
           SizedBox(height: 8),
           Text(
-            'Nam Long',
-            style: TextStyle(
+            name,
+            style: GoogleFonts.josefinSans(
                 fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           SizedBox(height: 8),
           Text(
-            'longntnse141021@fpt.edu.vn',
-            style: TextStyle(fontSize: 20, color: Colors.black.withOpacity(0.6)),
+            email,
+            style: GoogleFonts.josefinSans(
+                fontSize: 20, color: Colors.black.withOpacity(0.6)),
           )
         ],
       );
 
   Widget buildTop() {
-    final top = coverHeight - profileHeight / 2;
+    final top = 200 - profileHeight / 2;
     final bottom = profileHeight / 2;
     return Stack(
       clipBehavior: Clip.none,
@@ -68,7 +85,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Image.network(
           'https://c4.wallpaperflare.com/wallpaper/188/87/652/soccer-manchester-city-f-c-logo-wallpaper-preview.jpg',
           width: double.infinity,
-          height: coverHeight,
+          height: 200,
           fit: BoxFit.cover,
         ),
       );
