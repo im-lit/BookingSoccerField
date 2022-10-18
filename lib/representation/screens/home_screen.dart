@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //List soccerFieldModel
   final List<SoccerFieldModel> listSoccerField = [
     SoccerFieldModel(
       soccerFieldImage: AppAssets.imageSoccerField1,
@@ -118,7 +119,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     .map((e) => ItemSoccerFieldWidget(soccerFieldModel: e))
                     .toList(),
               )),
-              // CarouselSlider(items: items, options: options)
             ],
           ),
         ),

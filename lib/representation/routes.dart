@@ -10,6 +10,7 @@ final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => const SplashScreen(),
   LoginPage.routeName: (context) => const LoginPage(),
   MainApp.routeName: (context) => const MainApp(),
-  ProfileScreen.routeName: (context) => ProfileScreen(),
+  Detail.routeName: (context) => const Detail(),
+  ProfileScreen.routeName: (context) => const ProfileScreen(),
   Booking.routeName: (context) => Booking(),
 };
