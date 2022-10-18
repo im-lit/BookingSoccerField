@@ -1,3 +1,4 @@
+import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/booking_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -6,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Detail extends StatefulWidget {
   const Detail({super.key});
-   static String routeName = '/detail_page';
+   static String routeName = '/detail_screen';
   @override
   State<Detail> createState() => _DetailBookingState();
 }
@@ -209,7 +210,9 @@ class _DetailBookingState extends State<Detail> {
                   Center(
                     child: Container(
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(Booking.routeName);
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.resolveWith(
                             (states) {
