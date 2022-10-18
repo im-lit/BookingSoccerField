@@ -1,5 +1,6 @@
 import 'package:bookingsoccerfeild/core/constants/app_colors.dart';
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
+import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/detail_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -38,9 +39,7 @@ class _MainAppState extends State<MainApp> {
         index: _currentIndex,
         children: [
           HomeScreen(),
-          Container(
-            color: Colors.amber.shade100,
-          ),
+          Detail(),
           ProfileScreen()
         ],
       ),
