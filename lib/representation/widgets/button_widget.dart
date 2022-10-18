@@ -4,20 +4,23 @@ import 'package:bookingsoccerfeild/core/constants/text_style_constant.dart';
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
-  const ButtonWidget({Key? key, required this.title, this.ontap})
+  const ButtonWidget({Key? key, required this.title, this.ntap})
       : super(key: key);
 
   final String title;
-  final Function()? ontap;
+  final Function()? ntap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(kMediumPadding),
-          gradient: Gradients.defaultGradientBackground),
-      alignment: Alignment.center,
-      child: Text(title, style: TextStyles.defaultStyle.bold.whiteTextColor),
+    return GestureDetector(
+      onTap: ntap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(kMediumPadding),
+            gradient: Gradients.defaultGradientBackground),
+        alignment: Alignment.center,
+        child: Text(title, style: TextStyles.defaultStyle.bold.whiteTextColor),
+      ),
     );
   }
 }

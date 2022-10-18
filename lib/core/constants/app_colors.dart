@@ -30,8 +30,8 @@ class Gradients {
     begin: Alignment.topLeft,
     end: Alignment.bottomLeft,
     colors: [
-      AppColors.secondColor,
-      AppColors.primaryColor,
+      AppColors.blackGrey,
+      AppColors.textColor,
     ],
   );
 }

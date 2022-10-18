@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 class Detail extends StatefulWidget {
   const Detail({super.key});
 
+  static const String routeName = "/detail_screen";
+
   @override
   State<Detail> createState() => _DetailBookingState();
 }
@@ -55,7 +57,7 @@ class _DetailBookingState extends State<Detail> {
                       children: [
                         Expanded(
                           child: Text(
-                            'Goden Star Field',
+                            'Golden Star Field',
                             style: GoogleFonts.josefinSans(
                                 fontSize: 21,
                                 fontWeight: FontWeight.w900,
@@ -164,7 +166,7 @@ class _DetailBookingState extends State<Detail> {
                       left: 25,
                     ),
                     child: Text(
-                      '•HackerLord',
+                      '• HackerLord',
                       style: GoogleFonts.josefinSans(
                           fontSize: 19,
                           fontWeight: FontWeight.w400,
@@ -192,7 +194,7 @@ class _DetailBookingState extends State<Detail> {
                       left: 25,
                     ),
                     child: Text(
-                      '•A favourite field by most of celebrities, artificial grass made by brazil people. The ball is made by the Portuguese. The goal is made of iron.',
+                      '• A favourite field by most of celebrities, artificial grass made by brazil people. The ball is made by the Portuguese. The goal is made of iron.',
                       style: GoogleFonts.josefinSans(
                           fontSize: 19,
                           fontWeight: FontWeight.w300,

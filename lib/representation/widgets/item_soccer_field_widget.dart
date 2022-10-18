@@ -4,6 +4,9 @@ import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
 import 'package:bookingsoccerfeild/core/constants/text_style_constant.dart';
 import 'package:bookingsoccerfeild/core/helpers/image_helper.dart';
 import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
+import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/detail_screen.dart';
+import 'package:bookingsoccerfeild/representation/screens/login_page.dart';
+import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/soccer_field_detail_screen.dart';
 import 'package:bookingsoccerfeild/representation/widgets/button_widget.dart';
 import 'package:bookingsoccerfeild/representation/widgets/dashline_widget.dart';
@@ -75,6 +78,7 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
+                      flex: 6,
                       child: Row(
                         children: [
                           Text(
@@ -87,11 +91,11 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                       ),
                     ),
                     Expanded(
+                      flex: 4,
                       child: ButtonWidget(
                         title: 'Book a field',
-                        ontap: () {
-                          Navigator.of(context)
-                              .pushNamed(SoccerFieldDetailScreen.routeName);
+                        ntap: () {
+                          Navigator.of(context).pushNamed(Detail.routeName);
                         },
                       ),
                     )
