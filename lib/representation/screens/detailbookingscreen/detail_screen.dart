@@ -1,3 +1,4 @@
+import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
 import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/booking_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +7,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Detail extends StatefulWidget {
-  const Detail({super.key});
+  const Detail({super.key,  this.soccerField});
   static String routeName = '/detail_screen';
+  final SoccerFieldModel? soccerField;
   @override
   State<Detail> createState() => _DetailBookingState();
 }
@@ -57,7 +59,7 @@ class _DetailBookingState extends State<Detail> {
                       children: [
                         Expanded(
                           child: Text(
-                            'Golden Star Field',
+                            widget.soccerField!.fieldName,
                             style: GoogleFonts.josefinSans(
                                 fontSize: 21,
                                 fontWeight: FontWeight.w900,
@@ -93,7 +95,7 @@ class _DetailBookingState extends State<Detail> {
                     child: Row(
                       children: [
                         Text(
-                          '7 Man Field',
+                          widget.soccerField!.description,
                           style: GoogleFonts.josefinSans(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
@@ -112,7 +114,7 @@ class _DetailBookingState extends State<Detail> {
                       children: [
                         Expanded(
                           child: Text(
-                            '12 Sky9 Apartment, D9, HCM',
+                            widget.soccerField!.address,
                             style: GoogleFonts.josefinSans(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w400,

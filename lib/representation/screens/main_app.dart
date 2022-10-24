@@ -19,7 +19,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  int _currentIndex = 3;
+  int _currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +39,8 @@ class _MainAppState extends State<MainApp> {
         index: _currentIndex,
         children: [  
           HomeScreen(),
-          Detail(),
-          ProfileScreen(),
-          HelloScreen()
+          HelloScreen(),
+          ProfileScreen()
         ],
       ),
       bottomNavigationBar: SalomonBottomBar(

@@ -88,7 +88,7 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                       child: ButtonWidget(
                         title: 'Book a field',
                         ntap: () {
-                          Navigator.of(context).pushNamed(Detail.routeName);
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Detail(soccerField: soccerFieldModel)));
                         },
                       ),
                     )
