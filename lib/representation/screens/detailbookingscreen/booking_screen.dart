@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Booking extends StatefulWidget {
   const Booking({super.key});
@@ -10,8 +11,12 @@ class Booking extends StatefulWidget {
 class _BookingState extends State<Booking> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("booking123"),
+    return Scaffold(
+      body: Container(
+        child: Center(
+          child: Text("booking123"),
+        ),
+      ),
     );
   }
 }

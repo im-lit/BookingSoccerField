@@ -7,7 +7,6 @@ import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
 import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/detail_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/login_page.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
-import 'package:bookingsoccerfeild/representation/screens/soccer_field_detail_screen.dart';
 import 'package:bookingsoccerfeild/representation/widgets/button_widget.dart';
 import 'package:bookingsoccerfeild/representation/widgets/dashline_widget.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +28,7 @@ class ItemSoccerFieldWidget extends StatelessWidget {
           Container(
             width: double.infinity,
             //margin: EdgeInsets.only(right: kDefaultPadding),
-            child: ImageHelper.loadFromAsset(
-              soccerFieldModel.soccerFieldImage,
-              radius: BorderRadius.only(
-                  topLeft: Radius.circular(kDefaultPadding),
-                  topRight: Radius.circular(kDefaultPadding)),
-            ),
+            child: Image.asset('assets/sanbong.png'),
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -46,7 +40,7 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                   //mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      soccerFieldModel.soccerFieldName,
+                      soccerFieldModel.fieldName,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -59,10 +53,9 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                     ImageHelper.loadFromAsset(AppAssets.icStar),
                     SizedBox(
                       width: kMinPadding,
-                    ),
-                    Text(soccerFieldModel.star.toString()),
+                    ),   
                     Text(
-                      ' - ${soccerFieldModel.numberOfReview} reviews',
+                      '3600 reviews',
                       style: TextStyle(color: AppColors.subTitleColor),
                     )
                   ],
@@ -71,7 +64,7 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                   height: kDefaultPadding,
                 ),
                 Text(
-                  soccerFieldModel.soccerFieldType,
+                  soccerFieldModel.description,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 DashLineWidget(),
@@ -82,7 +75,7 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            '${soccerFieldModel.price}',
+                            '300',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           Text('k/hour',

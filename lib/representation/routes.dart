@@ -1,5 +1,7 @@
 import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/booking_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/detail_screen.dart';
+import 'package:bookingsoccerfeild/representation/screens/hello_screen.dart';
+import 'package:bookingsoccerfeild/representation/screens/home_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/login_page.dart';
 import 'package:bookingsoccerfeild/representation/screens/main_app.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
@@ -13,4 +15,6 @@ final Map<String, WidgetBuilder> routes = {
   Detail.routeName: (context) => const Detail(),
   ProfileScreen.routeName: (context) => const ProfileScreen(),
   Booking.routeName: (context) => Booking(),
+  HomeScreen.routeName: (context) => HomeScreen(),
+  HelloScreen.routeName: (context) => HelloScreen(),
 };

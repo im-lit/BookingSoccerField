@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Detail extends StatefulWidget {
   const Detail({super.key});
-   static String routeName = '/detail_screen';
+  static String routeName = '/detail_screen';
   @override
   State<Detail> createState() => _DetailBookingState();
 }
@@ -120,7 +120,7 @@ class _DetailBookingState extends State<Detail> {
                           ),
                         ),
                         Text(
-                          '550.000/hour',
+                          '550.000k/hour',
                           style: GoogleFonts.josefinSans(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -168,13 +168,15 @@ class _DetailBookingState extends State<Detail> {
                     child: TextButton(
                       child: Text(
                         '•HackerLord',
-                        style: GoogleFonts.josefinSans(
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
                             fontSize: 19,
                             fontWeight: FontWeight.w400,
-                            color: Colors.black),
+                            color: Color.fromARGB(255, 51, 235, 27)),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed(ProfileScreen.routeName);
+                        Navigator.of(context)
+                            .pushNamed(ProfileScreen.routeName);
                       },
                     ),
                   ),
