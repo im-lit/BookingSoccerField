@@ -1,14 +1,14 @@
 import 'package:bookingsoccerfeild/core/constants/app_colors.dart';
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
 import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/detail_screen.dart';
+import 'package:bookingsoccerfeild/representation/screens/hello_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
-
+import 'package:bookingsoccerfeild/representation/screens/home_screen.dart';
+import 'package:bookingsoccerfeild/representation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bookingsoccerfeild/widgets/NavBar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-
-import 'home_screen.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,11 @@ class _MainAppState extends State<MainApp> {
       ),
       body: IndexedStack(
         index: _currentIndex,
-        children: [HomeScreen(), Detail(), ProfileScreen()],
+        children: [  
+          HomeScreen(),
+          HelloScreen(),
+          ProfileScreen()
+        ],
       ),
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,

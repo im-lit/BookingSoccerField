@@ -1,13 +1,15 @@
+import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
+import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/booking_screen.dart';
+import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
 class Detail extends StatefulWidget {
-  const Detail({super.key});
-
-  static const String routeName = "/detail_screen";
-
+  const Detail({super.key,  this.soccerField});
+  static String routeName = '/detail_screen';
+  final SoccerFieldModel? soccerField;
   @override
   State<Detail> createState() => _DetailBookingState();
 }
@@ -29,7 +31,7 @@ class _DetailBookingState extends State<Detail> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: MediaQuery.of(context).size.height * .57,
+              height: MediaQuery.of(context).size.height * .73,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -57,7 +59,7 @@ class _DetailBookingState extends State<Detail> {
                       children: [
                         Expanded(
                           child: Text(
-                            'Golden Star Field',
+                            widget.soccerField!.fieldName,
                             style: GoogleFonts.josefinSans(
                                 fontSize: 21,
                                 fontWeight: FontWeight.w900,
@@ -93,7 +95,7 @@ class _DetailBookingState extends State<Detail> {
                     child: Row(
                       children: [
                         Text(
-                          '7 Man Field',
+                          widget.soccerField!.description,
                           style: GoogleFonts.josefinSans(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
@@ -112,7 +114,7 @@ class _DetailBookingState extends State<Detail> {
                       children: [
                         Expanded(
                           child: Text(
-                            '12 Sky9 Apartment, D9, HCM',
+                            widget.soccerField!.address,
                             style: GoogleFonts.josefinSans(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w400,
@@ -120,7 +122,7 @@ class _DetailBookingState extends State<Detail> {
                           ),
                         ),
                         Text(
-                          '550.000/hour',
+                          '550.000k/hour',
                           style: GoogleFonts.josefinSans(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -147,7 +149,7 @@ class _DetailBookingState extends State<Detail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: 30,
+                      top: 40,
                       right: 20,
                       left: 20,
                     ),
@@ -165,17 +167,24 @@ class _DetailBookingState extends State<Detail> {
                       right: 20,
                       left: 25,
                     ),
-                    child: Text(
-                      '• HackerLord',
-                      style: GoogleFonts.josefinSans(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black),
+                    child: TextButton(
+                      child: Text(
+                        '•HackerLord',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            fontSize: 19,
+                            fontWeight: FontWeight.w400,
+                            color: Color.fromARGB(255, 51, 235, 27)),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(ProfileScreen.routeName);
+                      },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: 30,
+                      top: 50,
                       right: 20,
                       left: 20,
                     ),
@@ -201,10 +210,13 @@ class _DetailBookingState extends State<Detail> {
                           color: Colors.black),
                     ),
                   ),
+                  SizedBox(height: 50),
                   Center(
                     child: Container(
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(Booking.routeName);
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.resolveWith(
                             (states) {

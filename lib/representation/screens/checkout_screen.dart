@@ -51,7 +51,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                   // ImageHelper.loadFromAsset(
                   //     widget.soccerFieldModel.soccerFieldImage),
                   Text(
-                    widget.soccerFieldModel.soccerFieldType,
+                    widget.soccerFieldModel.description,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -60,7 +60,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(widget.soccerFieldModel.soccerFieldName,
+                      Text(widget.soccerFieldModel.fieldName,
                           style: AppStyles.h4.copyWith(
                               color: AppColors.text1Color,
                               fontWeight: FontWeight.bold)),
@@ -93,7 +93,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                         width: kMinPadding,
                       ),
                       Text(
-                        widget.soccerFieldModel.soccerFieldLocation,
+                        widget.soccerFieldModel.address,
                         //style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -107,7 +107,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                       SizedBox(
                         width: kMinPadding,
                       ),
-                      Text('${widget.soccerFieldModel.numberOfReview} reviews'),
+                      Text('${widget.soccerFieldModel.totalReviews} reviews'),
                     ],
                   ),
                   SizedBox(
@@ -120,7 +120,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                           style: AppStyles.h4.copyWith(
                               color: AppColors.text1Color, fontSize: 20)),
                       Text(
-                        '${widget.soccerFieldModel.price} VND/h',
+                        '19h-20h',
                         style: TextStyle(fontSize: 20),
                       )
                     ],
@@ -135,7 +135,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                           style: AppStyles.h4.copyWith(
                               color: AppColors.text1Color, fontSize: 20)),
                       Text(
-                        '${widget.soccerFieldModel.price} VND/h',
+                        '10th-Oct-2022',
                         style: TextStyle(fontSize: 20),
                       )
                     ],
@@ -148,7 +148,8 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                           style: AppStyles.h4.copyWith(
                               color: AppColors.text1Color, fontSize: 20)),
                       Text(
-                        '${widget.soccerFieldModel.price} VND/h',
+                        //${widget.soccerFieldModel.price}
+                        '300000 VND/h',
                         style: TextStyle(fontSize: 20),
                       )
                     ],

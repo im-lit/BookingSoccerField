@@ -1,4 +1,5 @@
 import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
+import 'package:bookingsoccerfeild/network/network_soccerfield.dart';
 import 'package:bookingsoccerfeild/representation/widgets/item_soccer_field_widget.dart';
 import 'package:flutter/material.dart';
 import '../../core/constants/app_assets.dart';
@@ -16,33 +17,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //List soccerFieldModel
-  final List<SoccerFieldModel> listSoccerField = [
-    SoccerFieldModel(
-        soccerFieldImage: AppAssets.imageSoccerField1,
-        soccerFieldName: 'Golden Star Field',
-        star: 4.5,
-        price: 550,
-        soccerFieldType: '7-Man Field',
-        numberOfReview: 3242,
-        soccerFieldLocation: "12 Sky9 Apartment, D9 , HCM"),
-    SoccerFieldModel(
-        soccerFieldImage: AppAssets.imageSoccerField2,
-        soccerFieldName: 'Brother Hood Field',
-        star: 4.2,
-        price: 250,
-        soccerFieldType: '5-Man Field',
-        numberOfReview: 2222,
-        soccerFieldLocation: "12 Sky9 Apartment, D9 , HCM"),
-    SoccerFieldModel(
-        soccerFieldImage: AppAssets.imageSoccerField3,
-        soccerFieldName: 'Sky9 Field',
-        star: 5,
-        price: 550,
-        soccerFieldType: '7-Man Field',
-        numberOfReview: 3242,
-        soccerFieldLocation: "12 Sky9 Apartment, D9 , HCM")
-  ];
+  List<SoccerFieldModel>? listSoccerField;
+  @override
+  void initState() {
+    listSoccerField = SoccerFieldProvider().getlistSoccer();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -115,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SingleChildScrollView(
                   child: Column(
-                children: listSoccerField
+                children: listSoccerField!
                     .map((e) => ItemSoccerFieldWidget(soccerFieldModel: e))
                     .toList(),
               )),
