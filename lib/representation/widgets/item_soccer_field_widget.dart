@@ -4,6 +4,7 @@ import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
 import 'package:bookingsoccerfeild/core/constants/text_style_constant.dart';
 import 'package:bookingsoccerfeild/core/helpers/image_helper.dart';
 import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
+import 'package:bookingsoccerfeild/representation/screens/checkout_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/detail_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/login_page.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
@@ -16,6 +17,7 @@ class ItemSoccerFieldWidget extends StatelessWidget {
   const ItemSoccerFieldWidget({super.key, required this.soccerFieldModel});
 
   final SoccerFieldModel soccerFieldModel;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -74,6 +76,21 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                   soccerFieldModel.soccerFieldType,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
+                SizedBox(
+                  height: kDefaultPadding,
+                ),
+                Row(
+                  children: [
+                    ImageHelper.loadFromAsset(AppAssets.icLocation),
+                    SizedBox(
+                      width: kMinPadding,
+                    ),
+                    Text(
+                      soccerFieldModel.soccerFieldLocation,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
                 DashLineWidget(),
                 Row(
                   children: [
@@ -93,9 +110,11 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                     Expanded(
                       flex: 4,
                       child: ButtonWidget(
-                        title: 'Book a field',
+                        title: 'Book',
                         ntap: () {
-                          Navigator.of(context).pushNamed(Detail.routeName);
+                          Navigator.of(context).pushNamed(
+                              CheckoutScreen.routeName,
+                              arguments: soccerFieldModel);
                         },
                       ),
                     )

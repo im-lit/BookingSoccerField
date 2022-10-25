@@ -19,29 +19,29 @@ class _HomeScreenState extends State<HomeScreen> {
   //List soccerFieldModel
   final List<SoccerFieldModel> listSoccerField = [
     SoccerFieldModel(
-      soccerFieldImage: AppAssets.imageSoccerField1,
-      soccerFieldName: 'Golden Star Field',
-      star: 4.5,
-      price: 550,
-      soccerFieldType: '7 people yard',
-      numberOfReview: 3242,
-    ),
+        soccerFieldImage: AppAssets.imageSoccerField1,
+        soccerFieldName: 'Golden Star Field',
+        star: 4.5,
+        price: 550,
+        soccerFieldType: '7-Man Field',
+        numberOfReview: 3242,
+        soccerFieldLocation: "12 Sky9 Apartment, D9 , HCM"),
     SoccerFieldModel(
-      soccerFieldImage: AppAssets.imageSoccerField2,
-      soccerFieldName: 'Brother Hood Field',
-      star: 4.2,
-      price: 250,
-      soccerFieldType: '5 people yard',
-      numberOfReview: 2222,
-    ),
+        soccerFieldImage: AppAssets.imageSoccerField2,
+        soccerFieldName: 'Brother Hood Field',
+        star: 4.2,
+        price: 250,
+        soccerFieldType: '5-Man Field',
+        numberOfReview: 2222,
+        soccerFieldLocation: "12 Sky9 Apartment, D9 , HCM"),
     SoccerFieldModel(
-      soccerFieldImage: AppAssets.imageSoccerField3,
-      soccerFieldName: 'Sky9 Field',
-      star: 5,
-      price: 550,
-      soccerFieldType: '7 people yard',
-      numberOfReview: 3242,
-    )
+        soccerFieldImage: AppAssets.imageSoccerField3,
+        soccerFieldName: 'Sky9 Field',
+        star: 5,
+        price: 550,
+        soccerFieldType: '7-Man Field',
+        numberOfReview: 3242,
+        soccerFieldLocation: "12 Sky9 Apartment, D9 , HCM")
   ];
   @override
   Widget build(BuildContext context) {

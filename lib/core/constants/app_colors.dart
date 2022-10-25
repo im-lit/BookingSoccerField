@@ -18,7 +18,7 @@ class AppColors {
   static const Color primaryColor = Color(0xff6155CC);
   static const Color secondColor = Color(0xff8F67E8);
   static const Color yellowColor = Color(0xffFE9C5E);
-  static const Color dividerColor = Color(0xffE5E7EB);
+  static const Color dividerColor = Color.fromARGB(255, 146, 155, 175);
   static const Color text1Color = Color(0xff323B4B);
   static const Color subTitleColor = Color(0xff838383);
   static const Color backgroundScaffoldColor = Color(0xffF2F2F2);

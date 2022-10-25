@@ -5,7 +5,8 @@ class SoccerFieldModel {
       required this.star,
       required this.price,
       required this.soccerFieldType,
-      required this.numberOfReview});
+      required this.numberOfReview,
+      required this.soccerFieldLocation});
 
   final String soccerFieldImage;
   final String soccerFieldName;
@@ -13,4 +14,5 @@ class SoccerFieldModel {
   final int price;
   final String soccerFieldType;
   final int numberOfReview;
+  final String soccerFieldLocation;
 }
