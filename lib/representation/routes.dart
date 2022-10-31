@@ -11,6 +11,10 @@ import 'package:bookingsoccerfeild/representation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 SoccerFieldModel? soccerFieldModel;
+int date = 0;
+int month = 0;
+int year = 0;
+String selectedTime = '';
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => const SplashScreen(),
   LoginPage.routeName: (context) => const LoginPage(),
@@ -20,19 +24,21 @@ final Map<String, WidgetBuilder> routes = {
   Booking.routeName: (context) => Booking(),
   HomeScreen.routeName: (context) => HomeScreen(),
   HelloScreen.routeName: (context) => HelloScreen(),
+  CheckoutScreen.routeName: (context) => CheckoutScreen(
+      date: date, month: month, year: year, selectedTime: selectedTime)
 };
 
 // route của CheckoutScreen
-MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
-  switch (settings.name) {
-    // settings.name là name của route
-    case CheckoutScreen.routeName:
-      return MaterialPageRoute(builder: (context) {
-        final SoccerFieldModel soccerFieldModel =
-            (settings.arguments as SoccerFieldModel);
-        return CheckoutScreen(soccerFieldModel: soccerFieldModel);
-      });
-      break;
-    default:
-  }
-}
+// MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
+//   switch (settings.name) {
+//     // settings.name là name của route
+//     case CheckoutScreen.routeName:
+//       return MaterialPageRoute(builder: (context) {
+//         final SoccerFieldModel soccerFieldModel =
+//             (settings.arguments as SoccerFieldModel);
+//         return CheckoutScreen(soccerFieldModel: soccerFieldModel);
+//       });
+//       break;
+//     default:
+//   }
+// }

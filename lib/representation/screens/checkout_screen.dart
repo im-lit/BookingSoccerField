@@ -4,24 +4,46 @@ import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
 import 'package:bookingsoccerfeild/core/constants/text_style_constant.dart';
 import 'package:bookingsoccerfeild/core/helpers/image_helper.dart';
 import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
+import 'package:bookingsoccerfeild/representation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../widgets/dashline_widget.dart';
 
 class CheckoutScreen extends StatefulWidget {
-  const CheckoutScreen({super.key, required this.soccerFieldModel});
-
-  final SoccerFieldModel soccerFieldModel;
+  const CheckoutScreen({super.key, required this.date,required this.month,required this.year, required this.selectedTime});
+  final int date;
+  final int month;
+  final int year;
+  final String selectedTime;
 
   static const String routeName = '/check_out_screen';
   @override
   State<CheckoutScreen> createState() => _CheckoutScreen();
+  
 }
 
 class _CheckoutScreen extends State<CheckoutScreen> {
+  int id = 0;
+  String address = "";
+  String description = "";
+  String fieldName = "";
+   void _getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      id = prefs.getInt("ID")!;
+      address = prefs.getString("ADDRESS")!;
+      description = prefs.getString("DESCRIPTION")!;
+      fieldName = prefs.getString("FIELDNAME")!;
+    });
+   }
   @override
   Widget build(BuildContext context) {
+    _getData();
+    int date = widget.date;
+    int month = widget.month;
+    int year = widget.year;
     return Scaffold(
       body: Stack(
         children: [
@@ -51,7 +73,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                   // ImageHelper.loadFromAsset(
                   //     widget.soccerFieldModel.soccerFieldImage),
                   Text(
-                    widget.soccerFieldModel.description,
+                    description,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -60,7 +82,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(widget.soccerFieldModel.fieldName,
+                      Text(fieldName,
                           style: AppStyles.h4.copyWith(
                               color: AppColors.text1Color,
                               fontWeight: FontWeight.bold)),
@@ -93,7 +115,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                         width: kMinPadding,
                       ),
                       Text(
-                        widget.soccerFieldModel.address,
+                        address,
                         //style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -107,7 +129,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                       SizedBox(
                         width: kMinPadding,
                       ),
-                      Text('${widget.soccerFieldModel.totalReviews} reviews'),
+                      Text('$id reviews'),
                     ],
                   ),
                   SizedBox(
@@ -120,7 +142,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                           style: AppStyles.h4.copyWith(
                               color: AppColors.text1Color, fontSize: 20)),
                       Text(
-                        '19h-20h',
+                        widget.selectedTime,
                         style: TextStyle(fontSize: 20),
                       )
                     ],
@@ -134,8 +156,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                       Text('Date :',
                           style: AppStyles.h4.copyWith(
                               color: AppColors.text1Color, fontSize: 20)),
-                      Text(
-                        '10th-Oct-2022',
+                      Text('$date'+'/'+'$month'+'/'+'$year',        
                         style: TextStyle(fontSize: 20),
                       )
                     ],

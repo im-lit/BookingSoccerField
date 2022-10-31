@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: routes,
-      onGenerateRoute: generateRoutes,
+      // onGenerateRoute: generateRoutes,
       home: const SplashScreen(),
     );
   }

@@ -17,10 +17,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late bool _isLoading;
   List<SoccerFieldModel>? listSoccerField;
   @override
   void initState() {
+    _isLoading = true;
     listSoccerField = SoccerFieldProvider().getlistSoccer();
+    Future.delayed(const Duration(seconds: 4), (){
+      setState(() {
+      _isLoading = false;
+      });
+    });
+    super.initState();
   }
 
   @override

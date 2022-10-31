@@ -1,37 +1,45 @@
 class SoccerFieldModel {
   SoccerFieldModel(
       {required this.id,
-      required this.managerId,
+      required this.userName,
       required this.fieldName,
       required this.address,
       required this.description,
-      required this.totalReviews});
+      required this.openHour,
+      required this.closeHour,
+      required this.status});
 
   int id;
-  int managerId;
+  String userName;
   String fieldName;
   String description;
   String address;
-  int totalReviews;
+  String openHour;
+  String closeHour;
+  int status;
 
-  SoccerFieldModel.fromJson(Map<String, dynamic> json, this.id, this.managerId,
-      this.fieldName, this.description, this.address, this.totalReviews) {
+  SoccerFieldModel.fromJson(Map<String, dynamic> json, this.id, this.userName,
+      this.fieldName, this.description, this.address,this.openHour,this.closeHour, this.status) {
     id = json['id'];
-    managerId = json['managerId'];
+    userName = json['userName'];
     fieldName = json['fieldName'];
     description = json['description'];
     address = json['address'];
-    totalReviews = json['totalReviews'];
+    openHour = json['openHour'];
+    closeHour = json['closeHour'];
+    status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = id;
-    data['managerId'] = managerId;
+    data['userName'] = userName;
     data['fieldName'] = fieldName;
     data['description'] = description;
     data['address'] = address;
-    data['totalReviews'] = totalReviews;
+    data['openHour'] = openHour;
+    data['closeHour'] = closeHour;
+    data['status'] = status;
     return data;
   }
 }

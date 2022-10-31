@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Detail extends StatefulWidget {
   const Detail({super.key,  this.soccerField});
@@ -13,10 +14,17 @@ class Detail extends StatefulWidget {
   @override
   State<Detail> createState() => _DetailBookingState();
 }
-
 class _DetailBookingState extends State<Detail> {
+    Future<void> storeData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setInt("ID", widget.soccerField!.id);
+    await pref.setString("FIELDNAME", widget.soccerField!.fieldName);
+    await pref.setString("ADDRESS", widget.soccerField!.address);
+    await pref.setString("DESCRIPTION", widget.soccerField!.description);
+  }
   @override
   Widget build(BuildContext context) {
+    storeData();
     return Scaffold(
       body: Stack(
         children: [

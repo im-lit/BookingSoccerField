@@ -18,7 +18,7 @@ class SoccerFieldProvider with ChangeNotifier {
 
     try {
       final response = await http.get(
-        Uri.parse('https://booking-soccer.herokuapp.com/api/v1/soccer-fields/admin'),
+        Uri.parse('https://booking-soccer.herokuapp.com/api/v1/soccer-fields/admin?PageNum=1&OrderColumn=fieldName&IsAscending=true'),
         headers: {
           HttpHeaders.authorizationHeader: 'Bearer ' + jwt,
         },
@@ -27,15 +27,17 @@ class SoccerFieldProvider with ChangeNotifier {
         final data = jsonDecode(response.body); 
         if (data == null) return null;
         final List<SoccerFieldModel> loadedsoccerfield = [];
-        data["data"].forEach((soccerfielData) {
+        data["data"]["objectList"].forEach((soccerfielData) {
           loadedsoccerfield.add(
             SoccerFieldModel(
               id: soccerfielData["id"],
-              managerId: soccerfielData["managerId"],
+              userName: soccerfielData["userName"],
               description: soccerfielData["description"],
               address: soccerfielData["address"],
+              openHour: soccerfielData["openHour"],
+              closeHour: soccerfielData["closeHour"],
               fieldName: soccerfielData["fieldName"],
-              totalReviews: soccerfielData["totalReviews"],
+              status: soccerfielData["status"],
             ),
           );
         });
