@@ -1,7 +1,7 @@
 class SoccerFieldModel {
   SoccerFieldModel(
       {required this.id,
-      required this.userName,
+      // required this.userName,
       required this.fieldName,
       required this.address,
       required this.description,
@@ -10,7 +10,7 @@ class SoccerFieldModel {
       required this.status});
 
   int id;
-  String userName;
+  // String userName;
   String fieldName;
   String description;
   String address;
@@ -18,10 +18,12 @@ class SoccerFieldModel {
   String closeHour;
   int status;
 
-  SoccerFieldModel.fromJson(Map<String, dynamic> json, this.id, this.userName,
+
+// this.userName,
+  SoccerFieldModel.fromJson(Map<String, dynamic> json, this.id, 
       this.fieldName, this.description, this.address,this.openHour,this.closeHour, this.status) {
     id = json['id'];
-    userName = json['userName'];
+    // userName = json['userName'];
     fieldName = json['fieldName'];
     description = json['description'];
     address = json['address'];
@@ -33,7 +35,7 @@ class SoccerFieldModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = id;
-    data['userName'] = userName;
+    // data['userName'] = userName;
     data['fieldName'] = fieldName;
     data['description'] = description;
     data['address'] = address;

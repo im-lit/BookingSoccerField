@@ -18,7 +18,7 @@ class SoccerFieldProvider with ChangeNotifier {
 
     try {
       final response = await http.get(
-        Uri.parse('https://booking-soccer.herokuapp.com/api/v1/soccer-fields/admin?PageNum=1&OrderColumn=fieldName&IsAscending=true'),
+        Uri.parse('https://booking-soccer.herokuapp.com/api/v1/soccer-fields/user?PageNum=1&OrderColumn=fieldName&IsAscending=true'),
         headers: {
           HttpHeaders.authorizationHeader: 'Bearer ' + jwt,
         },
@@ -31,7 +31,7 @@ class SoccerFieldProvider with ChangeNotifier {
           loadedsoccerfield.add(
             SoccerFieldModel(
               id: soccerfielData["id"],
-              userName: soccerfielData["userName"],
+              // userName: soccerfielData["userName"],
               description: soccerfielData["description"],
               address: soccerfielData["address"],
               openHour: soccerfielData["openHour"],
