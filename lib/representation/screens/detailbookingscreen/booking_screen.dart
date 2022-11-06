@@ -6,6 +6,7 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Booking extends StatefulWidget {
   const Booking({super.key});
@@ -16,9 +17,18 @@ class Booking extends StatefulWidget {
 
 class _BookingState extends State<Booking> {
   var now = DateTime.now();
-  var selectedTime;
+  String selectedTime = "";
+  Future<void> _storeData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setInt("DATE", now.day);
+    await pref.setInt("MONTH", now.month);
+    await pref.setInt("YEAR", now.year);
+    await pref.setString("SELECTED", selectedTime);
+  }
+
   @override
   Widget build(BuildContext context) {
+    _storeData();
     return Scaffold(
       appBar: AppBar(
         title: Text(

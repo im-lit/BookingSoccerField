@@ -1,5 +1,7 @@
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
+import 'package:bookingsoccerfeild/representation/routes.dart';
 import 'package:bookingsoccerfeild/representation/screens/home_screen.dart';
+import 'package:bookingsoccerfeild/representation/screens/main_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -16,15 +18,8 @@ import '../widgets/dashline_widget.dart';
 
 class SuccessfullyBookingScreen extends StatefulWidget {
   const SuccessfullyBookingScreen(
-      {super.key,
-      required this.date,
-      required this.month,
-      required this.year,
-      required this.selectedTime});
-  final int date;
-  final int month;
-  final int year;
-  final String selectedTime;
+      {super.key,});
+
   static const String routeName = '/successfully_booking_screen';
   @override
   State<SuccessfullyBookingScreen> createState() =>
@@ -33,6 +28,10 @@ class SuccessfullyBookingScreen extends StatefulWidget {
 
 class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
   int id = 0;
+  int date = 0;
+  int month = 0;
+  int year = 0;
+  String selectedTime = "";
   String address = "";
   String description = "";
   String fieldName = "";
@@ -43,6 +42,10 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
       address = prefs.getString("ADDRESS")!;
       description = prefs.getString("DESCRIPTION")!;
       fieldName = prefs.getString("FIELDNAME")!;
+      date = prefs.getInt("DATE")!;
+      month = prefs.getInt("MONTH")!;
+      year = prefs.getInt("YEAR")!;
+      selectedTime = prefs.getString("SELECTED")!;
     });
   }
 
@@ -72,9 +75,6 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
   @override
   Widget build(BuildContext context) {
     _getData();
-    int date = widget.date;
-    int month = widget.month;
-    int year = widget.year;
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(bottom: kMediumPadding),
@@ -171,7 +171,7 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
                           style: AppStyles.h4.copyWith(
                               color: AppColors.text1Color, fontSize: 20)),
                       Text(
-                        widget.selectedTime,
+                        selectedTime,
                         style: TextStyle(fontSize: 20),
                       )
                     ],
@@ -242,7 +242,7 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
                     ButtonWidget(
                         title: '     Back to Home     ',
                         ntap: () {
-                          Navigator.pushNamed(context, HomeScreen.routeName);
+                          Navigator.pushNamed(context, MainApp.routeName);
                         }),
                   ],
                 )

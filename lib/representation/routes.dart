@@ -27,8 +27,7 @@ final Map<String, WidgetBuilder> routes = {
   HelloScreen.routeName: (context) => HelloScreen(),
   CheckoutScreen.routeName: (context) => CheckoutScreen(
       date: date, month: month, year: year, selectedTime: selectedTime),
-  SuccessfullyBookingScreen.routeName: (context) => SuccessfullyBookingScreen(
-      date: date, month: month, year: year, selectedTime: selectedTime)
+  SuccessfullyBookingScreen.routeName: (context) => SuccessfullyBookingScreen()
 };
 
 // route của CheckoutScreen

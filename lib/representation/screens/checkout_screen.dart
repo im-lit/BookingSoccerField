@@ -47,6 +47,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
     });
   }
 
+
   Widget _buildItemPayment(
       Widget icon, Color color, Function() onTap, String title) {
     return GestureDetector(
@@ -271,7 +272,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                     ],
                   ),
                 ),
-                Text('"Click Book when finishing the transacion"'),
+                Text('*Click Book when finishing the transacion'),
                 SizedBox(
                   height: 10,
                 ),
@@ -283,10 +284,6 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                         ntap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: ((context) => SuccessfullyBookingScreen(
-                                    date: now.day,
-                                    month: now.month,
-                                    year: now.year,
-                                    selectedTime: selectedTime,
                                   ))));
                         }),
                   ],
@@ -295,41 +292,6 @@ class _CheckoutScreen extends State<CheckoutScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Successfully extends StatelessWidget {
-  const Successfully({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: kDefaultPadding,
-          ),
-          Text('Booking Successfully',
-              style: AppStyles.h4.copyWith(
-                  color: AppColors.text1Color,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
-          Divider(color: Colors.black),
-          //PaymentMethod
-
-          Text('"Click Book when finishing the transacion"'),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ButtonWidget(title: '        Book        ', ntap: () {}),
-            ],
-          )
-        ],
       ),
     );
   }
