@@ -8,6 +8,7 @@ import 'package:bookingsoccerfeild/representation/screens/login_page.dart';
 import 'package:bookingsoccerfeild/representation/screens/main_app.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/splash_screen.dart';
+import 'package:bookingsoccerfeild/representation/screens/successfully_booking_screen.dart';
 import 'package:flutter/material.dart';
 
 SoccerFieldModel? soccerFieldModel;
@@ -25,6 +26,8 @@ final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => HomeScreen(),
   HelloScreen.routeName: (context) => HelloScreen(),
   CheckoutScreen.routeName: (context) => CheckoutScreen(
+      date: date, month: month, year: year, selectedTime: selectedTime),
+  SuccessfullyBookingScreen.routeName: (context) => SuccessfullyBookingScreen(
       date: date, month: month, year: year, selectedTime: selectedTime)
 };
 

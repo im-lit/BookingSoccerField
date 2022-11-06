@@ -57,7 +57,14 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                       width: kMinPadding,
                     ),
                     Text(
-                      '3600 reviews',
+                      '4.5 -',
+                      style: TextStyle(color: AppColors.subTitleColor),
+                    ),
+                    SizedBox(
+                      width: kMinPadding,
+                    ),
+                    Text(
+                      '(3600) reviews',
                       style: TextStyle(color: AppColors.subTitleColor),
                     )
                   ],
@@ -80,8 +87,7 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                     ),
                     Text(
                       soccerFieldModel.address,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(fontSize: 12),
                     ),
                   ],
                 ),

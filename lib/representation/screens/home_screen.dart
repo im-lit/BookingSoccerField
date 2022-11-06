@@ -1,3 +1,4 @@
+import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
 import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
 import 'package:bookingsoccerfeild/network/network_soccerfield.dart';
 import 'package:bookingsoccerfeild/representation/widgets/item_soccer_field_widget.dart';
@@ -23,9 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     _isLoading = true;
     listSoccerField = SoccerFieldProvider().getlistSoccer();
-    Future.delayed(const Duration(seconds: 4), (){
+    Future.delayed(const Duration(seconds: 4), () {
       setState(() {
-      _isLoading = false;
+        _isLoading = false;
       });
     });
     super.initState();
@@ -63,12 +64,26 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Online Booking',
-                                style: AppStyles.h4.copyWith(
-                                    color: AppColors.textColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 24),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Online',
+                                    style: AppStyles.h4.copyWith(
+                                        color: AppColors.blueColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24),
+                                  ),
+                                  SizedBox(
+                                    width: kMinPadding,
+                                  ),
+                                  Text(
+                                    'Booking',
+                                    style: AppStyles.h4.copyWith(
+                                        color: AppColors.textColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24),
+                                  ),
+                                ],
                               ),
                               Text('SoccerField',
                                   style: AppStyles.h4.copyWith(

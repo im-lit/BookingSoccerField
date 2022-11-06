@@ -1,21 +1,21 @@
-import 'package:bookingsoccerfeild/core/constants/app_assets.dart';
-import 'package:bookingsoccerfeild/core/constants/app_colors.dart';
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
-import 'package:bookingsoccerfeild/core/constants/text_style_constant.dart';
-import 'package:bookingsoccerfeild/core/helpers/image_helper.dart';
-import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
-import 'package:bookingsoccerfeild/representation/routes.dart';
 import 'package:bookingsoccerfeild/representation/screens/home_screen.dart';
-import 'package:bookingsoccerfeild/representation/screens/successfully_booking_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../core/constants/app_assets.dart';
+import '../../core/constants/app_colors.dart';
+import '../../core/constants/text_style_constant.dart';
+import '../../core/helpers/image_helper.dart';
 import '../widgets/button_widget.dart';
 import '../widgets/dashline_widget.dart';
 
-class CheckoutScreen extends StatefulWidget {
-  const CheckoutScreen(
+class SuccessfullyBookingScreen extends StatefulWidget {
+  const SuccessfullyBookingScreen(
       {super.key,
       required this.date,
       required this.month,
@@ -25,18 +25,17 @@ class CheckoutScreen extends StatefulWidget {
   final int month;
   final int year;
   final String selectedTime;
-
-  static const String routeName = '/check_out_screen';
+  static const String routeName = '/successfully_booking_screen';
   @override
-  State<CheckoutScreen> createState() => _CheckoutScreen();
+  State<SuccessfullyBookingScreen> createState() =>
+      _SuccessfullyBookingScreen();
 }
 
-class _CheckoutScreen extends State<CheckoutScreen> {
+class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
   int id = 0;
   String address = "";
   String description = "";
   String fieldName = "";
-  var now = DateTime.now();
   void _getData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -220,58 +219,20 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                 SizedBox(
                   height: kDefaultPadding,
                 ),
-                Text('Payment method',
+                Text('Booking Successfully',
                     style: AppStyles.h4.copyWith(
                         color: AppColors.text1Color,
                         fontSize: 20,
                         fontWeight: FontWeight.bold)),
                 Divider(color: Colors.black),
-                //PaymentMethod
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 1,
-                    left: 20,
-                    right: 20,
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: _buildItemPayment(
-                          ImageHelper.loadFromAsset(AppAssets.imgageMomo,
-                              height: 60),
-                          Color.fromARGB(255, 243, 242, 242),
-                          () {},
-                          '',
-                        ),
-                      ),
-                      SizedBox(
-                        width: kDefaultPadding,
-                      ),
-                      Expanded(
-                        child: _buildItemPayment(
-                          ImageHelper.loadFromAsset(AppAssets.imageViettelPay,
-                              height: 60),
-                          Color.fromARGB(255, 243, 242, 242),
-                          () {},
-                          '',
-                        ),
-                      ),
-                      SizedBox(
-                        width: kDefaultPadding,
-                      ),
-                      Expanded(
-                        child: _buildItemPayment(
-                          ImageHelper.loadFromAsset(AppAssets.imagePavpal,
-                              height: 60),
-                          Color.fromARGB(255, 243, 242, 242),
-                          () {},
-                          '',
-                        ),
-                      ),
-                    ],
-                  ),
+                Text('"Thank for using service"'),
+                SizedBox(
+                  height: 10,
                 ),
-                Text('"Click Book when finishing the transacion"'),
+                Container(
+                  child: ImageHelper.loadFromAsset(AppAssets.imageBall,
+                      height: 90, fit: BoxFit.fill),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -279,57 +240,16 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ButtonWidget(
-                        title: '        Book        ',
+                        title: '     Back to Home     ',
                         ntap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: ((context) => SuccessfullyBookingScreen(
-                                    date: now.day,
-                                    month: now.month,
-                                    year: now.year,
-                                    selectedTime: selectedTime,
-                                  ))));
+                          Navigator.pushNamed(context, HomeScreen.routeName);
                         }),
                   ],
                 )
               ],
-            ),
+            )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Successfully extends StatelessWidget {
-  const Successfully({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: kDefaultPadding,
-          ),
-          Text('Booking Successfully',
-              style: AppStyles.h4.copyWith(
-                  color: AppColors.text1Color,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
-          Divider(color: Colors.black),
-          //PaymentMethod
-
-          Text('"Click Book when finishing the transacion"'),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ButtonWidget(title: '        Book        ', ntap: () {}),
-            ],
-          )
-        ],
       ),
     );
   }

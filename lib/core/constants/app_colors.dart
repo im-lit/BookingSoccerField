@@ -23,6 +23,7 @@ class AppColors {
   static const Color subTitleColor = Color(0xff838383);
   static const Color backgroundScaffoldColor = Color(0xffF2F2F2);
   static const Color greenColor = Color(0xff008000);
+  static const Color blueColor = Color(0xffF2831D);
 }
 
 class Gradients {
