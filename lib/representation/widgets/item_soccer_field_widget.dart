@@ -7,6 +7,7 @@ import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/de
 import 'package:bookingsoccerfeild/representation/widgets/button_widget.dart';
 import 'package:bookingsoccerfeild/representation/widgets/dashline_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ItemSoccerFieldWidget extends StatelessWidget {
   const ItemSoccerFieldWidget({super.key, required this.soccerFieldModel});
@@ -107,13 +108,35 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 4,
-                      child: ButtonWidget(
-                        title: 'Book',
-                        ntap: () {
+                      child: ElevatedButton(
+                        onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
                                   Detail(soccerField: soccerFieldModel)));
                         },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) {
+                              if (states.contains(MaterialState.pressed)) {
+                                return Colors.white;
+                              }
+                              return Color.fromARGB(255, 46, 46, 46);
+                            },
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          'Book',
+                          style: GoogleFonts.josefinSans(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.white),
+                        ),
                       ),
                     )
                   ],

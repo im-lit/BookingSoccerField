@@ -5,6 +5,7 @@ import 'package:bookingsoccerfeild/core/constants/text_style_constant.dart';
 import 'package:bookingsoccerfeild/core/helpers/image_helper.dart';
 import 'package:bookingsoccerfeild/representation/screens/successfully_booking_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/button_widget.dart';
@@ -43,7 +44,6 @@ class _CheckoutScreen extends State<CheckoutScreen> {
     });
   }
 
-
   Widget _buildItemPayment(
       Widget icon, Color color, Function() onTap, String title) {
     return GestureDetector(
@@ -78,11 +78,29 @@ class _CheckoutScreen extends State<CheckoutScreen> {
         margin: EdgeInsets.only(bottom: kMediumPadding),
         child: Column(
           children: [
-            //Image
-            Container(
-              width: double.infinity,
-              child:
-                  ImageHelper.loadFromAsset(AppAssets.imageSoccerFieldDetail),
+            Stack(
+              children: [
+                //Image
+                Container(
+                  width: double.infinity,
+                  child: ImageHelper.loadFromAsset(
+                      AppAssets.imageSoccerFieldDetail),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 60, left: 5),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(kDefaultPadding),
+                      ),
+                      color: Colors.white.withOpacity(.9)),
+                  padding: EdgeInsets.all(kItemPadding),
+                  child: Icon(
+                    FontAwesomeIcons.arrowLeft,
+                    color: Colors.black,
+                    size: kDefaultIconSize,
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: EdgeInsets.symmetric(
@@ -96,7 +114,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: kDefaultPadding,
+                    height: kMinPadding,
                   ),
 
                   //NameFiled
@@ -146,7 +164,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                     ],
                   ),
                   SizedBox(
-                    height: kDefaultPadding,
+                    height: kMinPadding,
                   ),
 
                   //Views
@@ -217,7 +235,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
             Column(
               children: [
                 SizedBox(
-                  height: kDefaultPadding,
+                  height: 1,
                 ),
                 Text('Payment method',
                     style: AppStyles.h4.copyWith(
@@ -237,7 +255,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                       Expanded(
                         child: _buildItemPayment(
                           ImageHelper.loadFromAsset(AppAssets.imgageMomo,
-                              height: 60),
+                              height: 50),
                           Color.fromARGB(255, 243, 242, 242),
                           () {},
                           '',
@@ -249,7 +267,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                       Expanded(
                         child: _buildItemPayment(
                           ImageHelper.loadFromAsset(AppAssets.imageViettelPay,
-                              height: 60),
+                              height: 50),
                           Color.fromARGB(255, 243, 242, 242),
                           () {},
                           '',
@@ -261,7 +279,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                       Expanded(
                         child: _buildItemPayment(
                           ImageHelper.loadFromAsset(AppAssets.imagePavpal,
-                              height: 60),
+                              height: 50),
                           Color.fromARGB(255, 243, 242, 242),
                           () {},
                           '',
@@ -272,20 +290,42 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                 ),
                 Text('*Click Book when finishing the transacion'),
                 SizedBox(
-                  height: 4 ,
+                  height: 4,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ButtonWidget(
-                        title: '        Book        ',
-                        ntap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: ((context) => SuccessfullyBookingScreen(
-                                  ))));
-                        }),
-                  ],
-                )
+                Center(
+                  child: Container(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: ((context) =>
+                                SuccessfullyBookingScreen())));
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                          (states) {
+                            if (states.contains(MaterialState.pressed)) {
+                              return Colors.white;
+                            }
+                            return Color.fromARGB(200, 0, 0, 0);
+                          },
+                        ),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0),
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        'Book',
+                        style: GoogleFonts.josefinSans(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],

@@ -3,13 +3,21 @@ import 'package:bookingsoccerfeild/core/constants/app_colors.dart';
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
 import 'package:bookingsoccerfeild/core/helpers/image_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppBarContainerWidget extends StatelessWidget {
-  const AppBarContainerWidget(
-      {super.key, required this.child, required this.title});
+  const AppBarContainerWidget({
+    super.key,
+    required this.child,
+    this.title,
+    this.implementLeading = false,
+    this.titleString,
+  });
 
   final Widget child;
-  final String? title;
+  final Widget? title;
+  final String? titleString;
+  final bool implementLeading;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +31,39 @@ class AppBarContainerWidget extends StatelessWidget {
               automaticallyImplyLeading: false,
               elevation: 0,
               toolbarHeight: 90,
-              backgroundColor: AppColors.greenColor,
+              backgroundColor: Colors.white,
+              title: title ??
+                  Row(
+                    children: [
+                      if (implementLeading)
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(kDefaultPadding),
+                              ),
+                              color: Colors.white.withOpacity(.8)),
+                          padding: EdgeInsets.all(kItemPadding),
+                          child: Icon(
+                            FontAwesomeIcons.arrowLeft,
+                            color: Colors.black,
+                            size: kDefaultIconSize,
+                          ),
+                        ),
+                      Expanded(
+                        child: Center(
+                          child: Column(
+                            children: [
+                              Text(
+                                titleString ?? '',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
               flexibleSpace: Stack(
                 children: [
                   Container(

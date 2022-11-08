@@ -1,4 +1,5 @@
 import 'package:bookingsoccerfeild/representation/screens/checkout_screen.dart';
+import 'package:bookingsoccerfeild/representation/widgets/app_bar_container.dart';
 import 'package:bookingsoccerfeild/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -27,112 +28,136 @@ class _BookingState extends State<Booking> {
   @override
   Widget build(BuildContext context) {
     _storeData();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Booking',
-          style: GoogleFonts.josefinSans(fontSize: 25, color: Colors.black),
-        ),
-        centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 184, 247, 195),
-      ),
-      body: Column(
-        children: [
-          Container(
-            color: Color.fromARGB(255, 46, 46, 46),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(children: [
-                        Text(
-                          DateFormat.MMM().format(now),
-                          style: GoogleFonts.josefinSans(color: Colors.white),
-                        ),
-                        Text(
-                          '${now.day}',
-                          style: GoogleFonts.josefinSans(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22),
-                        ),
-                        Text(
-                          DateFormat.EEEE().format(now),
-                          style: GoogleFonts.josefinSans(color: Colors.white),
-                        )
-                      ]),
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    DatePicker.showDatePicker(context,
-                        showTitleActions: true,
-                        minTime: now,
-                        maxTime: now.add(Duration(days: 31)),
-                        onConfirm: (time) {
-                      now = time;
-                      setState(() => now);
-                    });
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Icon(
-                        Icons.calendar_today,
-                        color: Colors.white,
+    return AppBarContainerWidget(
+      titleString: 'Booking ',
+      implementLeading: true,
+      child: Scaffold(
+        body: Column(
+          children: [
+            Container(
+              color: Color.fromARGB(255, 46, 46, 46),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Column(children: [
+                          Text(
+                            DateFormat.MMM().format(now),
+                            style: GoogleFonts.josefinSans(color: Colors.white),
+                          ),
+                          Text(
+                            '${now.day}',
+                            style: GoogleFonts.josefinSans(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22),
+                          ),
+                          Text(
+                            DateFormat.EEEE().format(now),
+                            style: GoogleFonts.josefinSans(color: Colors.white),
+                          )
+                        ]),
                       ),
                     ),
                   ),
-                )
-              ],
+                  GestureDetector(
+                    onTap: () {
+                      DatePicker.showDatePicker(context,
+                          showTitleActions: true,
+                          minTime: now,
+                          maxTime: now.add(Duration(days: 31)),
+                          onConfirm: (time) {
+                        now = time;
+                        setState(() => now);
+                      });
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Icon(
+                          Icons.calendar_today,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          Expanded(
-              child: GridView.builder(
-                  itemCount: TIME_SLOT.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: ((context, index) => GestureDetector(
-                        onTap: () {
-                          selectedTime = TIME_SLOT.elementAt(index);
-                          setState(() => selectedTime);
-                        },
-                        child: Card(
-                          color: selectedTime == TIME_SLOT.elementAt(index)
-                              ? Colors.white54
-                              : Colors.white,
-                          child: GridTile(
-                            header: selectedTime == TIME_SLOT.elementAt(index)
-                                ? Icon(Icons.check)
-                                : null,
-                            child: Center(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(TIME_SLOT.elementAt(index)),
-                                  Text('Available'),
-                                ],
+            Expanded(
+                child: GridView.builder(
+                    itemCount: TIME_SLOT.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3),
+                    itemBuilder: ((context, index) => GestureDetector(
+                          onTap: () {
+                            selectedTime = TIME_SLOT.elementAt(index);
+                            setState(() => selectedTime);
+                          },
+                          child: Card(
+                            color: selectedTime == TIME_SLOT.elementAt(index)
+                                ? Colors.white54
+                                : Colors.white,
+                            child: GridTile(
+                              header: selectedTime == TIME_SLOT.elementAt(index)
+                                  ? Icon(Icons.check)
+                                  : null,
+                              child: Center(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(TIME_SLOT.elementAt(index)),
+                                    Text('Available'),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      )))),
-          ElevatedButton(
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: ((context) => CheckoutScreen(
-                        date: now.day,
-                        month: now.month,
-                        year: now.year,
-                        selectedTime: selectedTime,
-                      )))),
-              child: Text('Next'))
-        ],
+                        )))),
+            Center(
+              child: Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: ((context) => CheckoutScreen(
+                              date: now.day,
+                              month: now.month,
+                              year: now.year,
+                              selectedTime: selectedTime,
+                            ))));
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith(
+                      (states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return Colors.white;
+                        }
+                        return Color.fromARGB(255, 46, 46, 46);
+                      },
+                    ),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0),
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    'Next',
+                    style: GoogleFonts.josefinSans(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

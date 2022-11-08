@@ -1,6 +1,7 @@
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
 import 'package:bookingsoccerfeild/representation/screens/main_app.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/constants/app_assets.dart';
@@ -11,8 +12,9 @@ import '../widgets/button_widget.dart';
 import '../widgets/dashline_widget.dart';
 
 class SuccessfullyBookingScreen extends StatefulWidget {
-  const SuccessfullyBookingScreen(
-      {super.key,});
+  const SuccessfullyBookingScreen({
+    super.key,
+  });
 
   static const String routeName = '/successfully_booking_screen';
   @override
@@ -75,10 +77,29 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
         child: Column(
           children: [
             //Image
-            Container(
-              width: double.infinity,
-              child:
-                  ImageHelper.loadFromAsset(AppAssets.imageSoccerFieldDetail),
+            Stack(
+              children: [
+                //Image
+                Container(
+                  width: double.infinity,
+                  child: ImageHelper.loadFromAsset(
+                      AppAssets.imageSoccerFieldDetail),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 60, left: 5),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(kDefaultPadding),
+                      ),
+                      color: Colors.white.withOpacity(.9)),
+                  padding: EdgeInsets.all(kItemPadding),
+                  child: Icon(
+                    FontAwesomeIcons.arrowLeft,
+                    color: Colors.black,
+                    size: kDefaultIconSize,
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: EdgeInsets.symmetric(
@@ -92,7 +113,7 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: kDefaultPadding,
+                    height: kMinPadding,
                   ),
 
                   //NameFiled
@@ -142,7 +163,7 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
                     ],
                   ),
                   SizedBox(
-                    height: kDefaultPadding,
+                    height: kMinPadding,
                   ),
 
                   //Views
@@ -227,21 +248,43 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
                 ),
                 Container(
                   child: ImageHelper.loadFromAsset(AppAssets.imageBall,
-                      height: 90, fit: BoxFit.fill),
+                      height: 70, fit: BoxFit.fill),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ButtonWidget(
-                        title: '     Back to Home     ',
-                        ntap: () {
-                          Navigator.pushNamed(context, MainApp.routeName);
-                        }),
-                  ],
-                )
+                Center(
+                  child: Container(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, MainApp.routeName);
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                          (states) {
+                            if (states.contains(MaterialState.pressed)) {
+                              return Colors.white;
+                            }
+                            return Color.fromARGB(200, 0, 0, 0);
+                          },
+                        ),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0),
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        'Back to home',
+                        style: GoogleFonts.josefinSans(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             )
           ],

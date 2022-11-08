@@ -1,27 +1,31 @@
+import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
 import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
 import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/booking_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Detail extends StatefulWidget {
-  const Detail({super.key,  this.soccerField});
+  const Detail({super.key, this.soccerField});
   static String routeName = '/detail_screen';
   final SoccerFieldModel? soccerField;
   @override
   State<Detail> createState() => _DetailBookingState();
 }
+
 class _DetailBookingState extends State<Detail> {
-    Future<void> storeData() async {
+  Future<void> storeData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     await pref.setInt("ID", widget.soccerField!.id);
     await pref.setString("FIELDNAME", widget.soccerField!.fieldName);
     await pref.setString("ADDRESS", widget.soccerField!.address);
     await pref.setString("DESCRIPTION", widget.soccerField!.description);
   }
+
   @override
   Widget build(BuildContext context) {
     storeData();
@@ -34,6 +38,20 @@ class _DetailBookingState extends State<Detail> {
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/sanbong.png'), fit: BoxFit.cover),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 60, left: 5),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(kDefaultPadding),
+                ),
+                color: Colors.white.withOpacity(.9)),
+            padding: EdgeInsets.all(kItemPadding),
+            child: Icon(
+              FontAwesomeIcons.arrowLeft,
+              color: Colors.black,
+              size: kDefaultIconSize,
             ),
           ),
           Align(
