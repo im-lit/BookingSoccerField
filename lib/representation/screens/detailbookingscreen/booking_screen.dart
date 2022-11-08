@@ -1,9 +1,7 @@
 import 'package:bookingsoccerfeild/representation/screens/checkout_screen.dart';
-import 'package:bookingsoccerfeild/representation/screens/hello_screen.dart';
 import 'package:bookingsoccerfeild/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';

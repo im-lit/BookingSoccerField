@@ -1,10 +1,8 @@
 import 'package:bookingsoccerfeild/core/constants/app_colors.dart';
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
-import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/detail_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/hello_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/home_screen.dart';
-import 'package:bookingsoccerfeild/representation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bookingsoccerfeild/widgets/NavBar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

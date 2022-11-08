@@ -1,14 +1,8 @@
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
-import 'package:bookingsoccerfeild/representation/routes.dart';
-import 'package:bookingsoccerfeild/representation/screens/home_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/main_app.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../core/constants/app_assets.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/text_style_constant.dart';
@@ -139,9 +133,11 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
                       SizedBox(
                         width: kMinPadding,
                       ),
-                      Text(
-                        address,
-                        //style: TextStyle(fontWeight: FontWeight.bold),
+                      Expanded(
+                        child: Text(
+                          address,
+                          //style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   ),
@@ -217,7 +213,7 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
             Column(
               children: [
                 SizedBox(
-                  height: kDefaultPadding,
+                  height: 5,
                 ),
                 Text('Booking Successfully',
                     style: AppStyles.h4.copyWith(
@@ -225,7 +221,7 @@ class _SuccessfullyBookingScreen extends State<SuccessfullyBookingScreen> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold)),
                 Divider(color: Colors.black),
-                Text('"Thank for using service"'),
+                Text('Thank for using service'),
                 SizedBox(
                   height: 10,
                 ),

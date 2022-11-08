@@ -1,13 +1,9 @@
 import 'package:bookingsoccerfeild/core/constants/app_assets.dart';
 import 'package:bookingsoccerfeild/core/constants/app_colors.dart';
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
-import 'package:bookingsoccerfeild/core/constants/text_style_constant.dart';
 import 'package:bookingsoccerfeild/core/helpers/image_helper.dart';
 import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
-import 'package:bookingsoccerfeild/representation/screens/checkout_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/detailbookingscreen/detail_screen.dart';
-import 'package:bookingsoccerfeild/representation/screens/login_page.dart';
-import 'package:bookingsoccerfeild/representation/screens/profile_screen.dart';
 import 'package:bookingsoccerfeild/representation/widgets/button_widget.dart';
 import 'package:bookingsoccerfeild/representation/widgets/dashline_widget.dart';
 import 'package:flutter/material.dart';
@@ -85,9 +81,11 @@ class ItemSoccerFieldWidget extends StatelessWidget {
                     SizedBox(
                       width: kMinPadding,
                     ),
-                    Text(
-                      soccerFieldModel.address,
-                      style: TextStyle(fontSize: 12),
+                    Expanded(
+                      child: Text(
+                        soccerFieldModel.address,
+                        style: TextStyle(fontSize: 12),
+                      ),
                     ),
                   ],
                 ),

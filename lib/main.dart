@@ -1,10 +1,8 @@
 import 'package:bookingsoccerfeild/representation/routes.dart';
-import 'package:bookingsoccerfeild/representation/screens/login_page.dart';
 import 'package:bookingsoccerfeild/representation/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'representation/screens/login_page.dart';
 
 import 'core/constants/app_colors.dart';
 

@@ -3,14 +3,10 @@ import 'package:bookingsoccerfeild/core/constants/app_colors.dart';
 import 'package:bookingsoccerfeild/core/constants/dismension_constan.dart';
 import 'package:bookingsoccerfeild/core/constants/text_style_constant.dart';
 import 'package:bookingsoccerfeild/core/helpers/image_helper.dart';
-import 'package:bookingsoccerfeild/data/models/soccer_field_model.dart';
-import 'package:bookingsoccerfeild/representation/routes.dart';
-import 'package:bookingsoccerfeild/representation/screens/home_screen.dart';
 import 'package:bookingsoccerfeild/representation/screens/successfully_booking_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../widgets/button_widget.dart';
 import '../widgets/dashline_widget.dart';
 
@@ -141,9 +137,11 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                       SizedBox(
                         width: kMinPadding,
                       ),
-                      Text(
-                        address,
-                        //style: TextStyle(fontWeight: FontWeight.bold),
+                      Expanded(
+                        child: Text(
+                          address,
+                          //style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   ),
@@ -274,7 +272,7 @@ class _CheckoutScreen extends State<CheckoutScreen> {
                 ),
                 Text('*Click Book when finishing the transacion'),
                 SizedBox(
-                  height: 10,
+                  height: 4 ,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
